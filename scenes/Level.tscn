@@ -1,13 +1,166 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Dreamcatcher.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/dreams/GoodDream.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/dreams/BadDream.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/dreams/FastDream.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/dreams/SpiralDream.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/dreams/RandomDream.tscn" type="PackedScene" id=6]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Main"
+length = 60.0
+loop = true
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Background:color:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0.580392, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 52.2, 56.5, 60 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Background:color:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0.203922, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0.937255, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 52.2, 56.5, 60 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Background:color:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0.74902, -0.25, 0, 0.25, 0, 0.937255, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 52.2, 56.5, 60 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("Background:color:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 52.2, 56.5, 60 )
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("ProgressBar:value")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 60 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 100.0 ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Background:color:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Background:color:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Background:color:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("Background:color:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("ProgressBar:value")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
 
 [node name="Level" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
-speed = 8.0
-radius = 150.0
-rotation_speed = 2.0
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Main"
+anims/Main = SubResource( 1 )
+anims/RESET = SubResource( 2 )
+
+[node name="Background" type="ColorRect" parent="."]
+margin_left = -520.0
+margin_top = -312.0
+margin_right = 520.0
+margin_bottom = 304.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+margin_left = -512.0
+margin_top = -296.0
+margin_right = 508.0
+margin_bottom = -282.0
+
+[node name="Dreamcatcher" parent="." instance=ExtResource( 1 )]
+movement_speed = 4.0
+radius = 125.0
+rotation_speed = 10.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
+
+[node name="GoodDream" parent="." instance=ExtResource( 2 )]
+position = Vector2( -720, 0 )
+
+[node name="BadDream" parent="." instance=ExtResource( 3 )]
+position = Vector2( -8, -408 )
+
+[node name="FastDream" parent="." instance=ExtResource( 4 )]
+position = Vector2( 792, -360 )
+
+[node name="SpiralDream" parent="." instance=ExtResource( 5 )]
+position = Vector2( 680, 376 )
+
+[node name="RandomDream" parent="." instance=ExtResource( 6 )]
+position = Vector2( 8, 736 )

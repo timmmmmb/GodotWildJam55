@@ -3,7 +3,7 @@ extends KinematicBody2D
 const DEADZONE = 0.3
 const EPSILON = 0.0001
 
-export var speed: float
+export var movement_speed: float
 export var radius: float
 export var rotation_speed: float
 
@@ -50,7 +50,7 @@ func _update_target_angle() -> void:
 	self.last_mouse_angle = mouse_angle
 
 
-func _get_angle_delta(from: float, to: float, speeed: float, delta: float) -> float:
+func _get_angle_delta(from: float, to: float, speed: float, delta: float) -> float:
 	from = _normalize_angle(from)
 	var angle_delta = _normalize_angle(to - from)
 
@@ -58,16 +58,17 @@ func _get_angle_delta(from: float, to: float, speeed: float, delta: float) -> fl
 		angle_delta -= TAU
 
 	var max_delta = speed * delta
-
 	return clamp(angle_delta, -max_delta, max_delta)
 
 
 func _physics_process(delta: float) -> void:
 	_update_target_angle()
 
-	var angle_delta = _get_angle_delta(self.current_angle, self.target_angle, self.speed, delta)
+	var angle_delta = _get_angle_delta(
+		self.current_angle, self.target_angle, self.movement_speed, delta
+	)
 	self.current_angle += angle_delta
-	position = Vector2(radius, 0.0).rotated(self.current_angle)
+	self.position = Vector2(radius, 0.0).rotated(self.current_angle)
 
 	if angle_delta > 0:
 		self.target_rotation = self.current_angle + PI / 2
