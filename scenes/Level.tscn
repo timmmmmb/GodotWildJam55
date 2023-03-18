@@ -95,7 +95,6 @@ tracks/3/keys = {
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 7 )
-spawn_points = [ NodePath("SpawnPoints/SpawnPoint1"), NodePath("SpawnPoints/SpawnPoint2"), NodePath("SpawnPoints/SpawnPoint3"), NodePath("SpawnPoints/SpawnPoint4") ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Main"
@@ -143,20 +142,6 @@ autostart = true
 [node name="PhaseTimer" type="Timer" parent="."]
 wait_time = 20.0
 autostart = true
-
-[node name="SpawnPoints" type="Node" parent="."]
-
-[node name="SpawnPoint1" type="Node2D" parent="SpawnPoints"]
-position = Vector2( -576, 0 )
-
-[node name="SpawnPoint2" type="Node2D" parent="SpawnPoints"]
-position = Vector2( 0, -376 )
-
-[node name="SpawnPoint3" type="Node2D" parent="SpawnPoints"]
-position = Vector2( 576, 0 )
-
-[node name="SpawnPoint4" type="Node2D" parent="SpawnPoints"]
-position = Vector2( 0, 368 )
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
 [connection signal="timeout" from="PhaseTimer" to="." method="_on_PhaseTimer_timeout"]

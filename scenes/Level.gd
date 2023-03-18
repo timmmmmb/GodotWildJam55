@@ -3,8 +3,7 @@ extends Node2D
 signal victory
 signal defeat
 
-export (Array, NodePath) var spawn_points := []
-var spawn_point_nodes := []
+const spawn_radius = 675
 
 var GoodDream = preload("res://scenes/dreams/GoodDream.tscn")
 var BadDream = preload("res://scenes/dreams/BadDream.tscn")
@@ -35,20 +34,13 @@ var current_phase_index = 0
 var current_phase = phases[0]
 
 
-func _ready() -> void:
-	for spawn_point in self.spawn_points:
-		self.spawn_point_nodes.push_back(get_node(spawn_point))
-
-
 func _on_SpawnTimer_timeout() -> void:
 	_spawn_dream()
 
 
 func _spawn_dream():
 	var dream = _randomly_select_dream().instance()
-	var spawn_point = self.spawn_point_nodes[randi() % self.spawn_points.size()]
-
-	dream.position = spawn_point.position
+	dream.position = Vector2(spawn_radius, 0).rotated(randf() * TAU)
 	dream.connect("loose_life", self, "_loose_life")
 	add_child(dream)
 	
