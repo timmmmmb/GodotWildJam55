@@ -11,10 +11,9 @@ func _physics_process(_delta: float) -> void:
 
 func _reveal():
 	if randi() % 2 == 0:
-		$ColorRect.color = Color(0.215686, 0.215686, 0.215686)
 		self.dream_type = DreamType.BAD
 	else:
-		$ColorRect.color = Color(0.039216, 0.270588, 0.972549)
 		self.dream_type = DreamType.GOOD
 
 	is_revealed = true
+	_set_dream_texture()

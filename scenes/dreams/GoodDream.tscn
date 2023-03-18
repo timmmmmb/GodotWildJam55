@@ -1,19 +1,24 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/dreams/Dream.gd" type="Script" id=1]
+[ext_resource path="res://assets/GoodDream1.png" type="Texture" id=2]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 20, 20 )
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 25.5
+height = 41.0
 
 [node name="GoodDream" type="Area2D"]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_vertical_guides_": [ 0.0 ]
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -3.05176e-05, -3.8147e-06 )
+scale = Vector2( 0.35, 0.35 )
+texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -2, -4 )
+rotation = 1.5708
 shape = SubResource( 1 )
-
-[node name="ColorRect" type="ColorRect" parent="."]
-margin_left = -20.0
-margin_top = -20.0
-margin_right = 20.0
-margin_bottom = 20.0
-color = Color( 0.0392157, 0.270588, 0.972549, 1 )

@@ -3,12 +3,35 @@ extends Area2D
 
 signal loose_life
 
-enum DreamType { GOOD, BAD }
+enum DreamType { GOOD, BAD, UNKNOWN }
 
 export var speed: Vector2 = Vector2(100.0, 0.0)
 export (DreamType) var dream_type = DreamType.GOOD
 
 const center_radius: float = 30.0
+
+const good_dream_images = [
+	preload("res://assets/GoodDream1.png"), preload("res://assets/GoodDream2.png")
+]
+
+const bad_dream_images = [
+	preload("res://assets/BadDream1.png"),
+	preload("res://assets/BadDream2.png"),
+	preload("res://assets/BadDream3.png")
+]
+
+
+func _ready() -> void:
+	_set_dream_texture()
+	if self.position.x > 0:
+		$Sprite.scale.y *= -1
+
+
+func _set_dream_texture() -> void:
+	if self.dream_type == DreamType.GOOD:
+		$Sprite.texture = self.good_dream_images[randi() % self.good_dream_images.size()]
+	if self.dream_type == DreamType.BAD:
+		$Sprite.texture = self.bad_dream_images[randi() % self.bad_dream_images.size()]
 
 
 func _physics_process(delta: float) -> void:

@@ -5,6 +5,3 @@
 [node name="FastDream" instance=ExtResource( 1 )]
 speed = Vector2( 130, 0 )
 dream_type = 1
-
-[node name="ColorRect" parent="." index="1"]
-color = Color( 0.647059, 0.141176, 0.615686, 1 )

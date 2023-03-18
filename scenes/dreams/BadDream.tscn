@@ -4,6 +4,3 @@
 
 [node name="BadDream" instance=ExtResource( 1 )]
 dream_type = 1
-
-[node name="ColorRect" parent="." index="1"]
-color = Color( 0.215686, 0.215686, 0.215686, 1 )

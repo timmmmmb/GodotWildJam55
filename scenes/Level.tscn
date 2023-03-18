@@ -7,8 +7,7 @@
 
 [sub_resource type="Animation" id=1]
 resource_name = "Main"
-length = 60.0
-loop = true
+length = 120.0
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("Background:color:r")
 tracks/0/interp = 1
@@ -16,8 +15,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0.580392, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 52.2, 56.5, 60 )
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 10, 59.9, 120 )
 }
 tracks/1/type = "bezier"
 tracks/1/path = NodePath("Background:color:g")
@@ -26,8 +25,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0.203922, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0.937255, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 52.2, 56.5, 60 )
+"points": PoolRealArray( 0.0745098, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0.0156863, -0.25, 0, 0.25, 0, 0.203922, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 10, 59.9, 120 )
 }
 tracks/2/type = "bezier"
 tracks/2/path = NodePath("Background:color:b")
@@ -36,8 +35,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0.74902, -0.25, 0, 0.25, 0, 0.937255, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 52.2, 56.5, 60 )
+"points": PoolRealArray( 0.298039, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0.0627451, -0.25, 0, 0.25, 0, 0.74902, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 10, 59.9, 120 )
 }
 tracks/3/type = "bezier"
 tracks/3/path = NodePath("Background:color:a")
@@ -47,7 +46,7 @@ tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
 "points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 52.2, 56.5, 60 )
+"times": PoolRealArray( 0, 10, 59.9, 120 )
 }
 
 [sub_resource type="Animation" id=2]

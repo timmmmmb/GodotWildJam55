@@ -64,7 +64,9 @@ var phases = [
 var current_phase_index = 0
 var current_phase = phases[0]
 
+
 func _ready() -> void:
+	randomize()
 	_load_phase(0)
 
 
@@ -77,7 +79,6 @@ func _spawn_dream():
 	dream.position = Vector2(spawn_radius, 0).rotated(randf() * TAU)
 	dream.connect("loose_life", self, "_loose_life")
 	add_child(dream)
-	
 
 
 func _randomly_select_dream() -> Resource:
@@ -99,9 +100,7 @@ func _loose_life():
 		$LivesLabel.text = "DEFEAT"
 	else:
 		self.lives -= 1
-		$LivesLabel.text = (
-			str(self.lives) + " " + ("lives" if self.lives > 1 else "life")
-		)
+		$LivesLabel.text = (str(self.lives) + " " + ("lives" if self.lives > 1 else "life"))
 
 
 func _on_PhaseTimer_timeout() -> void:

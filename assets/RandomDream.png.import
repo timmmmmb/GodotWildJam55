@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Dreamcatcher2.png-c12e779a1dc909d176047b3a9ac2750e.stex"
+path="res://.import/RandomDream.png-ecc0f390aca7e76ad1e7a50945394418.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Dreamcatcher2.png"
-dest_files=[ "res://.import/Dreamcatcher2.png-c12e779a1dc909d176047b3a9ac2750e.stex" ]
+source_file="res://assets/RandomDream.png"
+dest_files=[ "res://.import/RandomDream.png-ecc0f390aca7e76ad1e7a50945394418.stex" ]
 
 [params]
 

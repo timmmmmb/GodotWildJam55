@@ -5,6 +5,3 @@
 [node name="SpiralDream" instance=ExtResource( 1 )]
 speed = Vector2( 100, 150 )
 dream_type = 1
-
-[node name="ColorRect" parent="." index="1"]
-color = Color( 1, 0, 0, 1 )
