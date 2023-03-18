@@ -1,6 +1,6 @@
 extends Dream
 
-const reveal_distance = 200
+const reveal_distance = 275
 var is_revealed = false
 
 

@@ -15,23 +15,57 @@ var lives = 3
 
 var phases = [
 	{
-		"spawn_interval": 2.5,
+		"spawn_interval": 1.2,
 		"dreams": [
 			{"scene": BadDream, "probability": 1}
 		]
 	},
 	{
-		"spawn_interval": 2.2,
+		"spawn_interval": 1.1,
 		"dreams":
 		[
-			{"scene": BadDream, "probability": 0.75},
-			{"scene": GoodDream, "probability": 0.25}
+			{"scene": GoodDream, "probability": 0.25},
+			{"scene": BadDream, "probability": 0.75}
+		]
+	},
+	{
+		"spawn_interval": 1.0,
+		"dreams":
+		[
+			{"scene": GoodDream, "probability": 0.2},
+			{"scene": BadDream, "probability": 0.4},
+			{"scene": FastDream, "probability": 0.4},
+		]
+	},
+	{
+		"spawn_interval": 0.9,
+		"dreams":
+		[
+			{"scene": GoodDream, "probability": 0.2},
+			{"scene": BadDream, "probability": 0.2},
+			{"scene": FastDream, "probability": 0.2},
+			{"scene": RandomDream, "probability": 0.2},
+			{"scene": SpiralDream, "probability": 0.2}
+		]
+	},
+	{
+		"spawn_interval": 0.8,
+		"dreams":
+		[
+			{"scene": GoodDream, "probability": 0.2},
+			{"scene": BadDream, "probability": 0.2},
+			{"scene": FastDream, "probability": 0.2},
+			{"scene": RandomDream, "probability": 0.2},
+			{"scene": SpiralDream, "probability": 0.2}
 		]
 	}
 ]
 
 var current_phase_index = 0
 var current_phase = phases[0]
+
+func _ready() -> void:
+	_load_phase(0)
 
 
 func _on_SpawnTimer_timeout() -> void:
@@ -62,6 +96,7 @@ func _randomly_select_dream() -> Resource:
 func _loose_life():
 	if self.lives == 1:
 		emit_signal("defeat")
+		$LivesLabel.text = "DEFEAT"
 	else:
 		self.lives -= 1
 		$LivesLabel.text = (
@@ -72,7 +107,14 @@ func _loose_life():
 func _on_PhaseTimer_timeout() -> void:
 	if self.current_phase_index + 1 == self.phases.size():
 		emit_signal("victory")
+		$LivesLabel.text = "VICTORY"
 		return
 
 	self.current_phase_index += 1
-	self.current_phase = self.phases[self.current_phase_index]
+	_load_phase(self.current_phase_index)
+
+
+func _load_phase(index: int) -> void:
+	self.current_phase = self.phases[index]
+	$SpawnTimer.wait_time = self.current_phase.spawn_interval
+	print("phase ", self.current_phase_index + 1, " out of ", self.phases.size())
