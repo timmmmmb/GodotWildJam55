@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Intro.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Intro.gd" type="Script" id=1]
 [ext_resource path="res://assets/Intro4.png" type="Texture" id=2]
 [ext_resource path="res://assets/Intro3.png" type="Texture" id=3]
 [ext_resource path="res://assets/Intro2.png" type="Texture" id=4]
 [ext_resource path="res://assets/Intro1.png" type="Texture" id=5]
+[ext_resource path="res://assets/font/font36pt.tres" type="DynamicFont" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Intro"
@@ -53,6 +54,18 @@ tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
 "times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Label:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 6.6 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
@@ -108,6 +121,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [ true ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("Label:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
 
 [node name="Intro" type="Node2D"]
 script = ExtResource( 1 )
@@ -120,36 +145,45 @@ margin_bottom = 575.0
 color = Color( 0.0862745, 0.0862745, 0.0862745, 1 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_left = -691.0
-margin_top = -494.0
-margin_right = 269.0
-margin_bottom = 46.0
-rect_scale = Vector2( 0.9, 0.9 )
+margin_left = -360.0
+margin_top = -296.0
+margin_right = 600.0
+margin_bottom = 244.0
+rect_scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 5 )
 
 [node name="TextureRect2" type="TextureRect" parent="."]
-margin_left = 196.0
-margin_top = -490.0
-margin_right = 676.0
-margin_bottom = 50.0
-rect_scale = Vector2( 0.9, 0.9 )
+margin_left = 144.0
+margin_top = -296.0
+margin_right = 624.0
+margin_bottom = 244.0
+rect_scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 4 )
 
 [node name="TextureRect3" type="TextureRect" parent="."]
-margin_left = -689.0
-margin_top = 8.0
-margin_right = -209.0
-margin_bottom = 548.0
-rect_scale = Vector2( 0.9, 0.9 )
+margin_left = -360.0
+margin_top = -16.0
+margin_right = 120.0
+margin_bottom = 524.0
+rect_scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )
 
 [node name="TextureRect4" type="TextureRect" parent="."]
-margin_left = -233.0
-margin_top = 12.0
-margin_right = 727.0
-margin_bottom = 552.0
-rect_scale = Vector2( 0.9, 0.9 )
+margin_left = -96.0
+margin_top = -16.0
+margin_right = 864.0
+margin_bottom = 524.0
+rect_scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+visible = false
+margin_left = -192.0
+margin_top = 256.0
+margin_right = 200.0
+margin_bottom = 300.0
+custom_fonts/font = ExtResource( 6 )
+text = "Press Space to Start"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
