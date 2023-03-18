@@ -23,7 +23,7 @@ disable_collision = false
 [node name="Feather" type="RigidBody2D" parent="."]
 
 [node name="Sprite" type="Sprite" parent="Feather"]
-position = Vector2( -41, -1 )
+position = Vector2( -39, 3 )
 rotation = 1.5708
 scale = Vector2( 0.15, 0.15 )
 texture = ExtResource( 1 )
