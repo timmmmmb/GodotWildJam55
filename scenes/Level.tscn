@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/Dreamcatcher.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/Bed.png" type="Texture" id=2]
+[ext_resource path="res://assets/Circle.png" type="Texture" id=3]
 [ext_resource path="res://scenes/Level.gd" type="Script" id=7]
 
 [sub_resource type="Animation" id=1]
@@ -48,18 +49,6 @@ tracks/3/keys = {
 "points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 52.2, 56.5, 60 )
 }
-tracks/4/type = "value"
-tracks/4/path = NodePath("ProgressBar:value")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0, 60 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.0, 100.0 ]
-}
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -103,18 +92,6 @@ tracks/3/keys = {
 "points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
-tracks/4/type = "value"
-tracks/4/path = NodePath("ProgressBar:value")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
-}
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 7 )
@@ -124,12 +101,6 @@ spawn_points = [ NodePath("SpawnPoints/SpawnPoint1"), NodePath("SpawnPoints/Spaw
 autoplay = "Main"
 anims/Main = SubResource( 1 )
 anims/RESET = SubResource( 2 )
-
-[node name="ProgressBar" type="ProgressBar" parent="."]
-margin_left = -512.0
-margin_top = -296.0
-margin_right = 508.0
-margin_bottom = -282.0
 
 [node name="Background" type="ColorRect" parent="."]
 margin_left = -520.0
@@ -146,7 +117,11 @@ position = Vector2( -1.90735e-06, 1.90735e-06 )
 scale = Vector2( 0.3125, 0.3125 )
 texture = ExtResource( 2 )
 
+[node name="Circle" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+
 [node name="Dreamcatcher" parent="." instance=ExtResource( 1 )]
+position = Vector2( 125, 0 )
 movement_speed = 4.0
 radius = 125.0
 rotation_speed = 10.0

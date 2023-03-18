@@ -1,6 +1,7 @@
 extends Node2D
 
-signal win
+signal victory
+signal defeat
 
 export (Array, NodePath) var spawn_points := []
 var spawn_point_nodes := []
@@ -48,7 +49,9 @@ func _spawn_dream():
 	var spawn_point = self.spawn_point_nodes[randi() % self.spawn_points.size()]
 
 	dream.position = spawn_point.position
+	dream.connect("loose_life", self, "_loose_life")
 	add_child(dream)
+	
 
 
 func _randomly_select_dream() -> Resource:
@@ -64,9 +67,19 @@ func _randomly_select_dream() -> Resource:
 	return GoodDream
 
 
+func _loose_life():
+	if self.lives == 1:
+		emit_signal("defeat")
+	else:
+		self.lives -= 1
+		$LivesLabel.text = (
+			str(self.lives) + " " + ("lives" if self.lives > 1 else "life")
+		)
+
+
 func _on_PhaseTimer_timeout() -> void:
 	if self.current_phase_index + 1 == self.phases.size():
-		emit_signal("win")
+		emit_signal("victory")
 		return
 
 	self.current_phase_index += 1
