@@ -10,6 +10,8 @@ export (DreamType) var dream_type = DreamType.GOOD
 
 const center_radius: float = 30.0
 
+var dead = false
+
 const good_dream_images = [
 	preload("res://assets/GoodDream1.png"), preload("res://assets/GoodDream2.png")
 ]
@@ -35,6 +37,8 @@ func _set_dream_texture() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if dead:
+		return
 	look_at(Vector2.ZERO)
 
 	self.position += self.speed.rotated(self.rotation) * delta
@@ -48,10 +52,13 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_collission_with_dreamcatcher() -> void:
-	get_parent().remove_child(self)
-
+	if dead:
+		return
+	self.visible = false
+	$AudioStreamPlayer2D.play()
 	if self.dream_type == DreamType.GOOD:
 		emit_signal("loose_life")
+	dead = true
 
 
 func _on_center_entered() -> void:
@@ -59,3 +66,7 @@ func _on_center_entered() -> void:
 
 	if self.dream_type == DreamType.BAD:
 		emit_signal("loose_life")
+
+
+func _on_AudioStreamPlayer2D_finished() -> void:
+	get_parent().remove_child(self)

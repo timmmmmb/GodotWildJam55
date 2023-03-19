@@ -7,6 +7,3 @@ dream_type = 1
 
 [node name="Sprite" parent="." index="0"]
 modulate = Color( 0.309804, 0.321569, 0.388235, 1 )
-
-[node name="CanvasModulate" parent="." index="2"]
-color = Color( 0.309804, 0.321569, 0.388235, 1 )

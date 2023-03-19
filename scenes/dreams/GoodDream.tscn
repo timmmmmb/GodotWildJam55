@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/dreams/Dream.gd" type="Script" id=1]
 [ext_resource path="res://assets/GoodDream1.png" type="Texture" id=2]
+[ext_resource path="res://assets/sfx/Plop.ogg" type="AudioStream" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 25.5
@@ -23,3 +24,8 @@ texture = ExtResource( 2 )
 position = Vector2( -2, -4 )
 rotation = 1.5708
 shape = SubResource( 1 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_AudioStreamPlayer2D_finished"]
