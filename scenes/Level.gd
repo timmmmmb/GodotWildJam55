@@ -97,15 +97,17 @@ func _randomly_select_dream() -> Resource:
 func _loose_life():
 	if self.lives == 1:
 		emit_signal("defeat")
+		get_tree().paused = true
 		$LivesLabel.text = "DEFEAT"
 	else:
 		self.lives -= 1
-		$LivesLabel.text = (str(self.lives) + " " + ("lives" if self.lives > 1 else "life"))
+		$LivesLabel.text = str(self.lives) + " " + ("lives" if self.lives > 1 else "life")
 
 
 func _on_PhaseTimer_timeout() -> void:
 	if self.current_phase_index + 1 == self.phases.size():
 		emit_signal("victory")
+		get_tree().paused = true
 		$LivesLabel.text = "VICTORY"
 		return
 
