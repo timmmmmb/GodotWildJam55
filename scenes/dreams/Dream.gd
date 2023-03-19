@@ -13,7 +13,8 @@ const center_radius: float = 30.0
 var dead = false
 
 const good_dream_images = [
-	preload("res://assets/GoodDream1.png"), preload("res://assets/GoodDream2.png")
+	preload("res://assets/GoodDream1.png"),
+	preload("res://assets/GoodDream2.png")
 ]
 
 const bad_dream_images = [

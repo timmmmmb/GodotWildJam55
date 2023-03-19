@@ -1,8 +1,5 @@
 extends Node2D
 
-signal victory
-signal defeat
-
 const spawn_radius = 675
 
 var GoodDream = preload("res://scenes/dreams/GoodDream.tscn")
@@ -67,7 +64,18 @@ var current_phase = phases[0]
 
 func _ready() -> void:
 	randomize()
+	$LivesLabel.visible = true
 	_load_phase(0)
+
+
+func _process(_delta: float) -> void:
+	var is_last_phase = self.current_phase_index == self.phases.size() - 1
+	var no_dreams_left = get_tree().get_nodes_in_group("dream").size() == 0
+	
+	if is_last_phase and no_dreams_left:
+		$LivesLabel.visible = false
+		$End/VictoryLabel.visible = true
+		get_tree().paused = true
 
 
 func _on_SpawnTimer_timeout() -> void:
@@ -95,20 +103,18 @@ func _randomly_select_dream() -> Resource:
 
 
 func _loose_life():
-	if self.lives == 1:
-		emit_signal("defeat")
+	self.lives -= 1
+	$LivesLabel.text = str(self.lives) + " " + ("lives" if self.lives > 1 else "life")
+		
+	if self.lives == 0:
+		$LivesLabel.visible = false
+		$End/DefeatLabel.visible = true
 		get_tree().paused = true
-		$LivesLabel.text = "DEFEAT"
-	else:
-		self.lives -= 1
-		$LivesLabel.text = str(self.lives) + " " + ("lives" if self.lives > 1 else "life")
 
 
 func _on_PhaseTimer_timeout() -> void:
 	if self.current_phase_index + 1 == self.phases.size():
-		emit_signal("victory")
-		get_tree().paused = true
-		$LivesLabel.text = "VICTORY"
+		$SpawnTimer.stop()
 		return
 
 	self.current_phase_index += 1

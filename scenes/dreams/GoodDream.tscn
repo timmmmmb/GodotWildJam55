@@ -8,7 +8,7 @@
 radius = 25.5
 height = 41.0
 
-[node name="GoodDream" type="Area2D"]
+[node name="GoodDream" type="Area2D" groups=["dream"]]
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_vertical_guides_": [ 0.0 ]

@@ -12,4 +12,5 @@ func _input(event):
 	if $AnimationPlayer.is_playing() and $AnimationPlayer.current_animation_position < 7.5:
 		$AnimationPlayer.advance(10.0)
 	else:
+		# warning-ignore:return_value_discarded
 		get_tree().change_scene("res://scenes/Level.tscn")
