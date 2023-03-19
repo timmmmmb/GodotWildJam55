@@ -12,10 +12,10 @@ func _physics_process(_delta: float) -> void:
 func _reveal():
 	if randi() % 2 == 0:
 		self.dream_type = DreamType.BAD
-		$CanvasModulate.color = "4f5263"
+		$Sprite.modulate = "4f5263"
 	else:
 		self.dream_type = DreamType.GOOD
-		$CanvasModulate.color = "d66ce8"
+		$Sprite.modulate = "d66ce8"
 
 	is_revealed = true
 	_set_dream_texture()

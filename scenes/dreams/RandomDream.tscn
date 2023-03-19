@@ -9,7 +9,5 @@ script = ExtResource( 2 )
 dream_type = 2
 
 [node name="Sprite" parent="." index="0"]
+modulate = Color( 1, 1, 1, 1 )
 texture = ExtResource( 3 )
-
-[node name="CanvasModulate" parent="." index="2"]
-color = Color( 1, 1, 1, 1 )

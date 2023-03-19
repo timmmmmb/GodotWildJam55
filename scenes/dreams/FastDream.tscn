@@ -6,5 +6,8 @@
 speed = Vector2( 130, 0 )
 dream_type = 1
 
+[node name="Sprite" parent="." index="0"]
+modulate = Color( 0.960784, 1, 0.67451, 1 )
+
 [node name="CanvasModulate" parent="." index="2"]
 color = Color( 0.960784, 1, 0.67451, 1 )
