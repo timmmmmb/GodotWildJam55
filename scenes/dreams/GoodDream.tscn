@@ -22,3 +22,6 @@ texture = ExtResource( 2 )
 position = Vector2( -2, -4 )
 rotation = 1.5708
 shape = SubResource( 1 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.839216, 0.423529, 0.909804, 1 )

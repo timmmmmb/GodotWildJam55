@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/Dreamcatcher.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/Bed.png" type="Texture" id=2]
 [ext_resource path="res://assets/Circle.png" type="Texture" id=3]
+[ext_resource path="res://assets/font/font22pt.tres" type="DynamicFont" id=4]
 [ext_resource path="res://scenes/Level.gd" type="Script" id=7]
 
 [sub_resource type="Animation" id=1]
@@ -48,6 +49,18 @@ tracks/3/keys = {
 "points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 10, 59.9, 120 )
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("Control:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -90,6 +103,18 @@ tracks/3/enabled = true
 tracks/3/keys = {
 "points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Control:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
 }
 
 [node name="Level" type="Node2D"]
@@ -141,6 +166,53 @@ autostart = true
 [node name="PhaseTimer" type="Timer" parent="."]
 wait_time = 20.0
 autostart = true
+
+[node name="Control" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control"]
+margin_left = -312.0
+margin_top = 217.0
+margin_right = 392.0
+margin_bottom = 274.0
+custom_fonts/font = ExtResource( 4 )
+text = "Move the Dreamcatcher using your Mouse. Stop "
+autowrap = true
+
+[node name="Label2" type="Label" parent="Control"]
+margin_left = 240.0
+margin_top = 217.0
+margin_right = 377.0
+margin_bottom = 244.0
+custom_colors/font_color = Color( 0.309804, 0.321569, 0.388235, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "Bad Dreams"
+
+[node name="Label3" type="Label" parent="Control"]
+margin_left = -312.0
+margin_top = 248.0
+margin_right = 24.0
+margin_bottom = 275.0
+custom_fonts/font = ExtResource( 4 )
+text = "from reaching the bed, but let "
+
+[node name="Label4" type="Label" parent="Control"]
+margin_left = 24.0
+margin_top = 248.0
+margin_right = 176.0
+margin_bottom = 275.0
+custom_colors/font_color = Color( 0.839216, 0.423529, 0.909804, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "Good Dreams"
+
+[node name="Label5" type="Label" parent="Control"]
+margin_left = 184.0
+margin_top = 248.0
+margin_right = 520.0
+margin_bottom = 275.0
+custom_fonts/font = ExtResource( 4 )
+text = "pass."
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
 [connection signal="timeout" from="PhaseTimer" to="." method="_on_PhaseTimer_timeout"]

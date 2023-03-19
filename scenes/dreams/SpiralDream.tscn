@@ -5,3 +5,6 @@
 [node name="SpiralDream" instance=ExtResource( 1 )]
 speed = Vector2( 100, 150 )
 dream_type = 1
+
+[node name="CanvasModulate" parent="." index="2"]
+color = Color( 0.25098, 0.466667, 0.266667, 1 )
